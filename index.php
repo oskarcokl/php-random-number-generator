@@ -16,7 +16,7 @@
         <form class="row align-items-end" action="index.php" method="post">
             <div class="col-auto">
                 <label class="form-label" for="numberDice">Number of dice to roll:</label>
-                <input class="form-control name=" numberDice" id="numberDice" type="number" value="1">
+                <input class="form-control" name="numberDice" id="numberDice" type="number" value="1">
             </div>
             <div class="col-auto">
                 <label class="form-label" for="diceType">Choose your dice:</label>
@@ -38,9 +38,9 @@
             $throws = [];
             $sum = 0;
 
-            print($numberDice . "\n");
-            print($diceType . "\n");
-            print(isset($_POST['numberDice']) . "\n");
+            // print($numberDice . "\n");
+            // print($diceType . "\n");
+            // print(isset($_POST['numberDice']) . "\n");
 
             for ($i = 0; $i < $numberDice; $i++) {
                 array_push($throws, rand(1, $diceType));
