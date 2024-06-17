@@ -16,16 +16,16 @@
         <form class="row align-items-end" action="index.php" method="post">
             <div class="col-auto">
                 <label class="form-label" for="numberDice">Number of dice to roll:</label>
-                <input class="form-control" name="numberDice" id="numberDice" type="number" value="1">
+                <?php echo '<input class="form-control" name="numberDice" id="numberDice" type="number" value="' . htmlspecialchars(isset($_POST['numberDice']) ? intval($_POST['numberDice']) : 1) . '">';?>
             </div>
             <div class="col-auto">
                 <label class="form-label" for="diceType">Choose your dice:</label>
                 <select class="form-control" name="diceType" id="diceType">
-                    <option value="4">d4</option>
-                    <option value="6">d6</option>
-                    <option value="10">d10</option>
-                    <option value="12">d12</option>
-                    <option value="20">d20</option>
+                    <?php echo '<option ' . htmlspecialchars($_POST['diceType'] == 4 ? 'selected' : '') . ' value="4">d4</option>'; ?>
+                    <?php echo '<option ' . htmlspecialchars($_POST['diceType'] == 6 ? 'selected' : '') . ' value="6">d6</option>'; ?>
+                    <?php echo '<option ' . htmlspecialchars($_POST['diceType'] == 10 ? 'selected' : '') . ' value="10">d10</option>'; ?>
+                    <?php echo '<option ' . htmlspecialchars($_POST['diceType'] == 12 ? 'selected' : '') . ' value="12">d12</option>'; ?>
+                    <?php echo '<option ' . htmlspecialchars($_POST['diceType'] == 20 ? 'selected' : '') . ' value="20">d20</option>'; ?>
                 </select>
             </div>
             <div class="col-auto">
@@ -37,10 +37,6 @@
             $diceType =  isset($_POST['diceType']) ? $_POST['diceType'] : 4;
             $throws = [];
             $sum = 0;
-
-            // print($numberDice . "\n");
-            // print($diceType . "\n");
-            // print(isset($_POST['numberDice']) . "\n");
 
             for ($i = 0; $i < $numberDice; $i++) {
                 array_push($throws, rand(1, $diceType));
